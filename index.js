@@ -27,7 +27,10 @@ export function showDropDownMenu() {
 
 // CAROUSEL
 export function next() {
-  document.querySelector('.next').addEventListener('click', (e) => {
+  const nextBtn = document.querySelector('.next')
+  if (!nextBtn) return; 
+  
+  nextBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     const slides = document.querySelectorAll('.carousel-slide');
@@ -46,7 +49,10 @@ export function next() {
 }
 
 export function previous() {
-  document.querySelector('.prev').addEventListener('click', (e) => {
+  const prevBtn = document.querySelector('.prev'); 
+  if (!prevBtn) return; 
+  
+ prevBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     const slides = document.querySelectorAll('.carousel-slide');
@@ -68,6 +74,8 @@ export function slideShow(interval = 5000) {
   const slides = document.querySelectorAll('.carousel-slide');
   const indicators = document.querySelectorAll('.carousel-indicator .dash');
 
+  if (!slides || !indicators) return; 
+
   let index = 0;
 
   setInterval(() => {
@@ -84,6 +92,7 @@ export function slideShow(interval = 5000) {
 export function changeSlideByIndicator() {
   const indicators = document.querySelectorAll('.dash'); 
   const slides = document.querySelectorAll('.carousel-slide');
+  if (!slides || !indicators) return;
 
   indicators.forEach((ind, index) => {
     ind.addEventListener('click', (e) => {
